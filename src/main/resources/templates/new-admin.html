@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Book My Test</title>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"
+></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+    integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous"
+>
+</head>
+<body id="home">
+    <div class="container-fluid main-container p-3">
+        <div class="row align-items-center mr-4">
+            <div class="col-lg-7">
+                <img src="./../assets/The-Arcane-Heir.jpg" class="img-fluid" alt="...">
+            </div>
+            <div class="col-lg-5 p-5" id="id_form_wrap">
+                <form class="row" action="/admins/save" th:object="${newAdminModel}" method="post">
+                    <div class="col-md-12 p-2">
+                        <label for="id_name" class="form-label">Name</label>
+                        <input type="text" class="form-control" formControlName="fullName" id="id_name"
+                            th:field="${newAdminModel.name}"
+                        >
+                    </div>
+                    <div class="col-md-12 p-2">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input type="email" class="form-control" formControlName="email" id="id_email"
+                            th:field="${newAdminModel.email}"
+                        >
+                    </div>
+                    <div class="col-md-12 p-2">
+                        <label for="id_license" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" formControlName="phoneNo" id="id_phone"
+                            th:field="${newAdminModel.phone}" placeholder="6476476476"
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
