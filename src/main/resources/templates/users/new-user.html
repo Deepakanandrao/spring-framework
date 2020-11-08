@@ -11,7 +11,11 @@
 >
 </head>
 <body id="home">
+<div class="row pl-3 pr-3">
+            <nav th:replace="common/navbar:: navbar"></nav>
+        </div>
     <div class="container-fluid main-container p-3">
+        
         <div class="row align-items-center mr-4">
             <div class="col-lg-7">
                 <img src="./../assets/The-Arcane-Heir.jpg" class="img-fluid" alt="...">
@@ -20,59 +24,75 @@
                 <form class="row" action="/users/save" th:object="${newUserModel}" method="post">
                     <div class="col-md-12 p-2">
                         <label for="id_name" class="form-label">Name</label>
-                        <input type="text" class="form-control" formControlName="fullName" id="id_name" th:field="${newUserModel.name}">
+                        <input type="text" class="form-control" formControlName="fullName" id="id_name"
+                            th:field="${newUserModel.name}"
+                        >
                     </div>
                     <div class="col-md-12 p-2">
                         <label for="id_email" class="form-label">Email</label>
-                        <input type="email" class="form-control" formControlName="email" id="id_email" th:field="${newUserModel.email}" >
+                        <input type="email" class="form-control" formControlName="email" id="id_email"
+                            th:field="${newUserModel.email}"
+                        >
                     </div>
                     <div class="col-md-12 p-2">
                         <label for="id_license" class="form-label">License Number</label>
-                        <input type="text" class="form-control" formControlName="licenseNo" id="id_license"  th:field="${newUserModel.licenseNo}"
-                            placeholder="00000-00000-00000"
+                        <input type="text" class="form-control" formControlName="licenseNo" id="id_license"
+                            th:field="${newUserModel.licenseNo}" placeholder="00000-00000-00000"
                         >
                     </div>
                     <div class="col-md-12 p-2">
                         <label for="id_expiry" class="form-label">Expiry Date</label>
-                        <input type="text" class="form-control" formControlName="expiryDate" id="id_expiry"  th:field="${newUserModel.licenseExpiry}"
-                            placeholder="yyyy/mm/dd"
+                        <input type="text" class="form-control" formControlName="expiryDate" id="id_expiry"
+                            th:field="${newUserModel.licenseExpiry}" placeholder="yyyy/mm/dd"
                         >
                     </div>
                     <div class="col-md-3 p-2">
                         <label for="id_testType" class="form-label">Test Type</label>
-                        <select id="id_testType" class="form-select" formControlName="testType"  th:field="${newUserModel.licenseType}">
+                        <select id="id_testType" class="form-select" formControlName="testType"
+                            th:field="${newUserModel.licenseType}"
+                        >
                             <option selected value='g2'>G2</option>
                             <option value="g">G</option>
                         </select>
                     </div>
                     <div class="col-md-4 p-2">
                         <label for="id_bookingType" class="form-label">Booking Type</label>
-                        <select id="id_bookingType" formControlName="bookingType" class="form-select"  th:field="${newUserModel.regiType}">
+                        <select id="id_bookingType" formControlName="bookingType" class="form-select"
+                            th:field="${newUserModel.regiType}"
+                        >
                             <option selected value="new">New</option>
                             <option value="reschedule">Reschedule</option>
                         </select>
                     </div>
                     <div class="col-md-5 p-2">
                         <label for="id_prefrredStartDate" class="form-label">From </label>
-                        <select id="id_prefrredStartDate" formControlName="preferredDate" class="form-select"  th:field="${newUserModel.prefDateStart}">
+                        <select id="id_prefrredStartDate" formControlName="preferredDate" class="form-select"
+                            th:field="${newUserModel.prefDateStart}"
+                        >
                             <option value="0">From Today</option>
                         </select>
                     </div>
                     <div class="col-md-5 p-2">
                         <label for="id_prefrredEndDate" class="form-label">To</label>
-                        <select id="id_prefrredEndDate" formControlName="preferredDate" class="form-select"  th:field="${newUserModel.prefDateEnd}">
+                        <select id="id_prefrredEndDate" formControlName="preferredDate" class="form-select"
+                            th:field="${newUserModel.prefDateEnd}"
+                        >
                             <option value="2">within 1 week</option>
                         </select>
                     </div>
                     <div class="col-md-12 p-2">
                         <label for="id_g2Location" class="form-label">G2 Centre Locations</label>
-                        <select id="id_g2Location" formControlName="g2locationPref" class="form-select" multiple  th:field="${newUserModel.prefG2location}">
+                        <select id="id_g2Location" formControlName="g2locationPref" class="form-select" multiple
+                            th:field="${newUserModel.prefG2location}"
+                        >
                             <option value="oakville">Oakville</option>
                         </select>
                     </div>
                     <div class="col-md-12 p-2">
                         <label for="id_gLocation" class="form-label">G Centre Locations</label>
-                        <select id="id_gLocation" formControlName="glocationPref" class="form-select" multiple  th:field="${newUserModel.prefGLocation}">
+                        <select id="id_gLocation" formControlName="glocationPref" class="form-select" multiple
+                            th:field="${newUserModel.prefGLocation}"
+                        >
                             <option value="orangeville">Orangeville</option>
                         </select>
                     </div>

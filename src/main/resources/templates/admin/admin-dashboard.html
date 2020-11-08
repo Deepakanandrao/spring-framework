@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Book My Test</title>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"
+></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+    integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous"
+>
+</head>
+<body id="home">
+    <div class="row pl-3 pr-3">
+        <nav th:replace="common/navbar:: navbar"></nav>
+    </div>
+    <div class="container-fluid main-container">
+        <div class="row align-items-top" style="margin-top: 15px;">
+            <div class="col-lg-2 border-right">
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action active" aria-current="true"> Users </a>
+                    <a href="#" class="list-group-item list-group-item-action">Bookings</a>
+                    <a href="#" class="list-group-item list-group-item-action">Centers</a>
+                    <a href="#" class="list-group-item list-group-item-action">Reports</a>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">License Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="aRecord: ${usersList}">
+                            <th scope="row">1</th>
+                            <td th:text="${aRecord.name}"></td>
+                            <td th:text="${aRecord.email}"></td>
+                            <td th:text="${aRecord.licenseType}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

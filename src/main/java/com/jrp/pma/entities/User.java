@@ -1,9 +1,13 @@
 package com.jrp.pma.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
@@ -26,7 +30,18 @@ public class User {
 	private String prefDateStart;
 	private String prefDateEnd;
 	
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch =FetchType.LAZY)
+	@JoinColumn(name="admin_id")
+	private Admin assigned_admin;
 	
+	public Admin getAssigned_admin() {
+		return assigned_admin;
+	}
+
+	public void setAssigned_admin(Admin assigned_admin) {
+		this.assigned_admin = assigned_admin;
+	}
+
 	public User() {}
 	
 	public User(String name, String email, String licenseNo, String licenseExpiry, String phone, String licenseType,

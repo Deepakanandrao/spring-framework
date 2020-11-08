@@ -26,7 +26,7 @@ public class UserController {
 		//Create the Form object instance
 		User newUserModel = new User();
 		model.addAttribute("newUserModel", newUserModel);
-		return "new-user";
+		return "users/new-user";
 	}
 	
 	@PostMapping("/save")

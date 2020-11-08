@@ -11,13 +11,16 @@
 >
 </head>
 <body id="home">
+    <div class="row pl-3 pr-3">
+        <nav th:replace="common/navbar:: navbar"></nav>
+    </div>
     <div class="container-fluid main-container p-3">
         <div class="row align-items-center mr-4">
             <div class="col-lg-7">
                 <img src="./../assets/The-Arcane-Heir.jpg" class="img-fluid" alt="...">
             </div>
             <div class="col-lg-5 p-5" id="id_form_wrap">
-                <form class="row" action="/admins/save" th:object="${newAdminModel}" method="post">
+                <form class="row" action="/admin/save" th:object="${newAdminModel}" method="post">
                     <div class="col-md-12 p-2">
                         <label for="id_name" class="form-label">Name</label>
                         <input type="text" class="form-control" formControlName="fullName" id="id_name"
@@ -35,6 +38,15 @@
                         <input type="text" class="form-control" formControlName="phoneNo" id="id_phone"
                             th:field="${newAdminModel.phone}" placeholder="6476476476"
                         >
+                    </div>
+                    <div class="col-md-12 p-2">
+                        <label for="id_users" class="form-label">Users</label>
+                        <select class="form-control" formControlName="users" id="id_users" th:field="${newAdminModel.users}" multiple>
+                        <option th:each = "user : ${all_users}"
+                        		th:value = "${user.userId}"
+                        		th:text = "${user.name}"
+                        ></option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">SUBMIT</button>
             </div>
