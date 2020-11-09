@@ -19,28 +19,37 @@ public class AdminController {
 
 	@Autowired
 	iAdminRepository adminRepo;
-	
+
 	@Autowired
 	iUserRepository userRepo;
-	
+
 	public AdminController() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@RequestMapping("/new")
 	public String displayForm(Model model) {
 		Admin adminModel = new Admin();
 		List<User> users = userRepo.findAll();
-		
+
 		model.addAttribute("newAdminModel", adminModel);
 		model.addAttribute("all_users", users);
-		
+
 		return "admin/new-admin";
 	}
-	
+
 	@PostMapping("/save")
 	public String createAdmin(Admin admin, Model model) {
 		adminRepo.save(admin);
+
+		// For onetomany also pass @RequestParam ,List<User> users in function
+		// Iterable<User> selectedUsers = userRepo.findAllById(users);
+		//
+		// for(User u: selectedUsers) {
+		// u.setAssigned_admins(admin);
+		// userRepo.save(u);
+		// }
+
 		return "redirect:new";
 	}
 

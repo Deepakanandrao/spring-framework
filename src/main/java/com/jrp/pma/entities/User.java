@@ -1,5 +1,7 @@
 package com.jrp.pma.entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,16 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
-	
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
-	
+
 	private String name;
 	private String email;
 	private String licenseNo;
@@ -29,21 +31,23 @@ public class User {
 	private String prefG2location;
 	private String prefDateStart;
 	private String prefDateEnd;
-	
-	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch =FetchType.LAZY)
-	@JoinColumn(name="admin_id")
-	private Admin assigned_admin;
-	
-	public Admin getAssigned_admin() {
-		return assigned_admin;
+
+	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH }, fetch = FetchType.LAZY)
+	@JoinTable(name = "admin_user", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "admin_id"))
+	private List<Admin> assigned_admins;
+
+	public List<Admin> getAssigned_admins() {
+		return assigned_admins;
 	}
 
-	public void setAssigned_admin(Admin assigned_admin) {
-		this.assigned_admin = assigned_admin;
+	public void setAssigned_admins(List<Admin> assigned_admins) {
+		this.assigned_admins = assigned_admins;
 	}
 
-	public User() {}
-	
+	public User() {
+	}
+
 	public User(String name, String email, String licenseNo, String licenseExpiry, String phone, String licenseType,
 			String regiType, String rescheduleCount, String prefGLocation, String prefG2location, String prefDateStart,
 			String prefDateEnd) {
@@ -62,137 +66,108 @@ public class User {
 		this.prefDateEnd = prefDateEnd;
 	}
 
-
 	public Long getUserId() {
 		return userId;
 	}
-
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-
 	public String getName() {
 		return name;
 	}
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public String getLicenseNo() {
 		return licenseNo;
 	}
-
 
 	public void setLicenseNo(String licenseNo) {
 		this.licenseNo = licenseNo;
 	}
 
-
 	public String getLicenseExpiry() {
 		return licenseExpiry;
 	}
-
 
 	public void setLicenseExpiry(String licenseExpiry) {
 		this.licenseExpiry = licenseExpiry;
 	}
 
-
 	public String getPhone() {
 		return phone;
 	}
-
 
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-
 	public String getLicenseType() {
 		return licenseType;
 	}
-
 
 	public void setLicenseType(String licenseType) {
 		this.licenseType = licenseType;
 	}
 
-
 	public String getRegiType() {
 		return regiType;
 	}
-
 
 	public void setRegiType(String regiType) {
 		this.regiType = regiType;
 	}
 
-
 	public String getRescheduleCount() {
 		return rescheduleCount;
 	}
-
 
 	public void setRescheduleCount(String rescheduleCount) {
 		this.rescheduleCount = rescheduleCount;
 	}
 
-
 	public String getPrefGLocation() {
 		return prefGLocation;
 	}
-
 
 	public void setPrefGLocation(String prefGLocation) {
 		this.prefGLocation = prefGLocation;
 	}
 
-
 	public String getPrefG2location() {
 		return prefG2location;
 	}
-
 
 	public void setPrefG2location(String prefG2location) {
 		this.prefG2location = prefG2location;
 	}
 
-
 	public String getPrefDateStart() {
 		return prefDateStart;
 	}
-
 
 	public void setPrefDateStart(String prefDateStart) {
 		this.prefDateStart = prefDateStart;
 	}
 
-
 	public String getPrefDateEnd() {
 		return prefDateEnd;
 	}
 
-
 	public void setPrefDateEnd(String prefDateEnd) {
 		this.prefDateEnd = prefDateEnd;
 	}
-
-
-	
 
 }
